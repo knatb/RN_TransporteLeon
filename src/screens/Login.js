@@ -1,45 +1,49 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Directions } from 'react-native-gesture-handler';
 
-export default class Login extends Component{
-    render(){
-        const {navigate} = this.props.navigation;
+export const Login = ({navigation}) => {
+    const [curp, onChangeCurp] = React.useState("");
+    const [password, onChangePassword] = React.useState("");
 
-        return(
-            <View style = {styles.viewLogin}>
-               <Image style = {styles.imageLogo} source = {require('../images/leon-logo-1.png')}/>
-               
-               <View style = {styles.viewForm}>
-                    <TextInput 
-                        style={styles.inputs} 
-                        placeholder='CURP' 
-                        keyboardType='default'
-                    />
-                    <TextInput 
-                        style={styles.inputs} 
-                        placeholder='CONTRASEÑA' 
-                        keyboardType='default'
-                        secureTextEntry
-                    />
-                    <View style = {styles.containers}>
-                        <TouchableOpacity onPress={() => navigate('Home')}>
-                            <Text style={styles.btnLogin} >INICIAR SESIÓN</Text>
-                        </TouchableOpacity>
-                    </View>                    
+    return(
+        <View style = {styles.viewLogin}>
+            
+            <Image style = {styles.imageLogo} source = {require('../images/leon-logo-1.png')}/>
+            
+            <View style = {styles.viewForm}>
+                <TextInput 
+                    style={styles.inputs} 
+                    placeholder='CURP' 
+                    keyboardType='default'
+                    onChangeText={(text) => {onChangeCurp(text)}}
+                    value={curp}
+                />
+                <TextInput 
+                    style={styles.inputs} 
+                    placeholder='CONTRASEÑA'
+                    keyboardType='default'
+                    secureTextEntry
+                    onChangeText={onChangePassword}
+                    value={password}
+                />
+                <View style = {styles.containers}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                        <Text style={styles.btnLogin} >INICIAR SESIÓN</Text>
+                    </TouchableOpacity>
+                </View>                    
 
-                    <Text style={styles.bText1} >¿No tienes cuenta?</Text>
+                <Text style={styles.bText1} >¿No tienes cuenta?</Text>
 
-                    <View >
-                        <TouchableOpacity onPress={() => navigate('Register')}>                        
-                            <Text style={styles.bText2} >Registrate aquí</Text>
-                        </TouchableOpacity>
-                    </View>                    
-                </View>
+                <View >
+                    <TouchableOpacity onPress={() => navigation.navigate('Register')}>                        
+                        <Text style={styles.bText2} >Registrate aquí</Text>
+                    </TouchableOpacity>
+                </View>                    
             </View>
-        )
-    }
-}
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     containers: {

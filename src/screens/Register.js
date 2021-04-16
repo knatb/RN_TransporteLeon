@@ -1,71 +1,89 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import RNPicker from 'react-native-picker-select';
 
-export default class Register extends Component{
-    render(){
-        const {navigate} = this.props.navigation;
-        
-        return(
-            <View style = {styles.viewLogin}>
-               <Image style = {styles.imageLogo} source = {require('../images/leon-logo-1.png')}/>
-               
-               <View style = {styles.viewForm}>
+export const Register = ({navigation}) => {
+    const [Fname, onChangeFName] = React.useState("");
+    const [Lname, onChangeLName] = React.useState("");
+    const [Age, onChangeAge] = React.useState("");
+    const [Gender, onChangeGender] = React.useState("H");
+    const [curp, onChangeCurp] = React.useState("");
+    const [password, onChangePassword] = React.useState("");
+
+    return(
+        <View style = {styles.viewLogin}>
+            <Image style = {styles.imageLogo} source = {require('../images/leon-logo-1.png')}/>
+            
+            <View style = {styles.viewForm}>
+                <TextInput 
+                    style={styles.inputs} 
+                    placeholder='Nombre(s)' 
+                    keyboardType='default'                    
+                    onChangeText={onChangeFName}
+                    value={Fname}
+                />
+                <TextInput 
+                    style={styles.inputs} 
+                    placeholder='Apellido(s)'
+                    keyboardType='default'
+                    onChangeText={onChangeLName}
+                    value={Lname}
+                />
+                <View style = {styles.pickers}>                        
                     <TextInput 
-                        style={styles.inputs} 
-                        placeholder='Nombre(s)' 
-                        keyboardType='default'
+                        style={styles.selectPicker} 
+                        placeholder='Edad' 
+                        keyboardType='numeric'
+                        onChangeText={onChangeAge}
+                        value={Age}
                     />
-                    <TextInput 
-                        style={styles.inputs} 
-                        placeholder='Apellido(s)' 
-                        keyboardType='default'
+                    <RNPicker
+                        style={{ height: 50, width: 100 }}
+                        onValueChange = {(value) => onChangeGender(value)}
+                        value={Gender}
+                        placeholder={{
+                            label: 'Seleccione su sexo',
+                            value: null,
+                        }}
+                        items= {[
+                            {label: 'Hombre', value: 'H'},
+                            {label: 'Mujer', value: 'M'},
+                            {label: 'Otro', value: 'O'},
+                        ]}
                     />
-                    <View style = {styles.pickers}>                        
-                        <TextInput 
-                            style={styles.selectPicker} 
-                            placeholder='Edad' 
-                            keyboardType='numeric'
-                        />
-                        <RNPicker
-                            style={pickerStyle.inputAndroid}                
-                            placeholder={{
-                                label: 'Seleccione su sexo',
-                                value: null,
-                            }}
-                            items= {[
-                                {label: 'Hombre', value: 'H'},
-                                {label: 'Mujer', value: 'M'},
-                                {label: 'Otro', value: 'O'},
-                            ]}
-                        />
-                    </View>
-                    <TextInput 
-                        style={styles.inputs} 
-                        placeholder='Curp' 
-                        keyboardType='default'
-                    />
-                    <TextInput 
-                        style={styles.inputs} 
-                        placeholder='Contraseña' 
-                        keyboardType='default'
-                        secureTextEntry
-                    />
-                    <TextInput 
-                        style={styles.inputs} 
-                        placeholder='Confirmar contraseña' 
-                        keyboardType='default'
-                        secureTextEntry
-                    />
-                   <View style = {styles.containers}>
-                        <TouchableOpacity onPress={() => navigate('Login')}>
-                            <Text style={styles.btnLogin} >REGISTRAR CUENTA</Text>
-                        </TouchableOpacity>
-                    </View> 
                 </View>
+                <TextInput 
+                    style={styles.inputs} 
+                    placeholder='Curp' 
+                    keyboardType='default'
+                    onChangeText={onChangeCurp}
+                    value={curp}
+                />
+                <TextInput 
+                    style={styles.inputs} 
+                    placeholder='Contraseña' 
+                    keyboardType='default'
+                    secureTextEntry
+                />
+                <TextInput 
+                    style={styles.inputs} 
+                    placeholder='Confirmar contraseña' 
+                    keyboardType='default'
+                    secureTextEntry
+                />
+                <View style = {styles.containers}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                        <Text style={styles.btnLogin} >REGISTRAR CUENTA</Text>
+                    </TouchableOpacity>
+                </View> 
             </View>
-        )
-    }
+        </View>
+    )
+}
+
+// TODO Function that validates the password
+function ValidatePass () {
+
 }
 
 const styles = StyleSheet.create({

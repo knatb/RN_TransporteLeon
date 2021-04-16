@@ -1,0 +1,81 @@
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button } from 'react-native';
+import { Directions } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+
+const Profile = () => {
+
+    const navigation = useNavigation();
+
+    return(
+        <View style = {styles.view}>
+            <View style={styles.datos}>
+                <Text>Francisco Fernando Cruz Galvez</Text>
+                <Text>90 años</Text>
+                <Text>Sexo: Otro</Text>
+                <Text>Pagobus: Preferencial</Text>
+            </View>
+            <View style={styles.buttonsView}>
+            <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
+                <Text style={styles.buttons} >EDITAR CUENTA</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.popToTop()}>
+                <Text style={styles.buttons} >CERRAR SESIÓN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                <Text style={styles.buttonDel} >ELIMINAR CUENTA</Text>
+            </TouchableOpacity>
+            </View>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    view: {
+        backgroundColor: '#FFF',
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    datos: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        marginTop: 20,
+    },
+    buttonsView: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        marginTop: 20,
+        width: 300
+    },
+    buttons:{
+        fontSize: '20px',
+        backgroundColor: '#EB9142',
+        color: '#000',
+        alignSelf: 'center',
+        width: '100%',
+        padding: '15px',
+        textAlign: 'center'
+    },
+    buttonDel:{
+        fontSize: '20px',
+        backgroundColor: '#cc0000',
+        color: '#FFF',
+        alignSelf: 'center',
+        width: '100%',
+        padding: '15px',
+        textAlign: 'center'
+    },
+  });
+
+  export default Profile;
+
+  // gris claro #BFBFBF
+  // gris #404040
+  //naranja #EB9142
+  //azul #31348F

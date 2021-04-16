@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button } from 'react-native';
 import { Directions } from 'react-native-gesture-handler';
+import MapView from 'react-native-maps';
 
-export default class Home extends Component{
-    render(){
-        const {navigate} = this.props.navigation;
-
-        return(
-            <View style = {styles.viewLogin}>
-               <Text>HOME</Text>
-            </View>
-        )
-    }
+export default function Home (){
+    return( 
+        <View style = {styles.viewLogin}>
+             <MapView
+            initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+            }}
+            customMapStyle={styles.map}
+        />
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -23,6 +28,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
+    map: {
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height
+    }
   });
 
   // gris claro #BFBFBF
