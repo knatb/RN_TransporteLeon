@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Directions } from 'react-native-gesture-handler';
+import logo from '../images/leon-logo.png'; 
 
 export const Login = ({navigation}) => {
     const [curp, onChangeCurp] = React.useState("");
@@ -9,7 +10,7 @@ export const Login = ({navigation}) => {
     return(
         <View style = {styles.viewLogin}>
             
-            <Image style = {styles.imageLogo} source = {require('../images/leon-logo-1.png')}/>
+            <Image source={logo} style={{ width: 280, height: 230 }} /> 
             
             <View style = {styles.viewForm}>
                 <TextInput 

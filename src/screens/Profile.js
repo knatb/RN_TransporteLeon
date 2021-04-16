@@ -8,25 +8,25 @@ const Profile = () => {
     const navigation = useNavigation();
 
     return(
-        <View style = {styles.view}>
-            <View style={styles.datos}>
-                <Text>Francisco Fernando Cruz Galvez</Text>
-                <Text>90 años</Text>
-                <Text>Sexo: Otro</Text>
-                <Text>Pagobus: Preferencial</Text>
-            </View>
-            <View style={styles.buttonsView}>
-            <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
-                <Text style={styles.buttons} >EDITAR CUENTA</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.popToTop()}>
-                <Text style={styles.buttons} >CERRAR SESIÓN</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                <Text style={styles.buttonDel} >ELIMINAR CUENTA</Text>
-            </TouchableOpacity>
-            </View>
+    <View style = {styles.view}>
+        <View style={styles.datos}>
+            <Text>Francisco Fernando Cruz Galvez</Text>
+            <Text>90 años</Text>
+            <Text>Sexo: Otro</Text>
+            <Text>Pagobus: Preferencial</Text>
         </View>
+        <View style={styles.buttonsView}>
+        <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
+            <Text style={styles.buttons} >EDITAR CUENTA</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.popToTop()}>
+            <Text style={styles.buttons} >CERRAR SESIÓN</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.buttonDel} >ELIMINAR CUENTA</Text>
+        </TouchableOpacity>
+        </View>
+    </View>
     )
 }
 
@@ -58,18 +58,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#EB9142',
         color: '#000',
         alignSelf: 'center',
-        width: '100%',
+        width: 300,
         padding: '15px',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: 10
     },
     buttonDel:{
         fontSize: '20px',
         backgroundColor: '#cc0000',
         color: '#FFF',
         alignSelf: 'center',
-        width: '100%',
+        width: 300,
         padding: '15px',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: 10
     },
   });
 

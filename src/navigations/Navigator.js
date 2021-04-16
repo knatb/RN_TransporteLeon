@@ -20,6 +20,7 @@ function TransactScreen() {
     <Transact></Transact>
   );
 }
+
 function ProfileScreen() {
   return (
       <SettingsStack.Navigator

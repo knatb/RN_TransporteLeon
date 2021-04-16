@@ -5,15 +5,13 @@ import { Directions } from 'react-native-gesture-handler';
 export default function Transact (){
     return(
         <View style = {styles.view}>
-            <View style={styles.datos}>
-                <Text>Francisco Fernando Cruz Galvez</Text>
-                <Text>90 años</Text>
-                <Text>Sexo: Otro</Text>
-                <Text>Pagobus: Preferencial</Text>
+            <View style={styles.data}>
+                <Text style={styles.datainfo}>Tu Pagobus expira el: DD/MM/YYYY</Text>
+                <Text style={styles.datainfo}>Por favor anexa tu documento para proceder a la renovación de tu tarjeta PagoBus</Text>
             </View>
             <View style={styles.fileView}>
             <TouchableOpacity style={styles.fileSelect}>
-                <Text  >Seleccionar archivo...</Text>
+                <Text style={{color:'#FFF', fontSize: '1em'}} >Seleccionar archivo...</Text>
             </TouchableOpacity>
             </View>
         </View>
@@ -29,7 +27,33 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         marginTop: 20,
     },
-    
+    data: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        marginTop: 20,
+    },
+    datainfo:{
+        margin: 30
+    },
+    fileView:{
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end',
+        marginTop: 20,
+        height: 300,
+        width: 300,
+        backgroundColor: '#BFBFBF'
+    },
+    fileSelect:{
+        alignSelf: 'center',
+        marginBottom: 20,
+        backgroundColor: '#404040',
+        height: 30,
+        padding: 10
+    }
   });
 
   // gris claro #BFBFBF

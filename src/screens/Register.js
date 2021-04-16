@@ -6,13 +6,12 @@ export const Register = ({navigation}) => {
     const [Fname, onChangeFName] = React.useState("");
     const [Lname, onChangeLName] = React.useState("");
     const [Age, onChangeAge] = React.useState("");
-    const [Gender, onChangeGender] = React.useState("H");
+    const [Gender, onChangeGender] = React.useState("Seleccione su sexo");
     const [curp, onChangeCurp] = React.useState("");
     const [password, onChangePassword] = React.useState("");
 
     return(
         <View style = {styles.viewLogin}>
-            <Image style = {styles.imageLogo} source = {require('../images/leon-logo-1.png')}/>
             
             <View style = {styles.viewForm}>
                 <TextInput 
@@ -28,30 +27,28 @@ export const Register = ({navigation}) => {
                     keyboardType='default'
                     onChangeText={onChangeLName}
                     value={Lname}
+                />                      
+                <TextInput 
+                    style={styles.selectPicker} 
+                    placeholder='Edad' 
+                    keyboardType='numeric'
+                    onChangeText={onChangeAge}
+                    value={Age}
                 />
-                <View style = {styles.pickers}>                        
-                    <TextInput 
-                        style={styles.selectPicker} 
-                        placeholder='Edad' 
-                        keyboardType='numeric'
-                        onChangeText={onChangeAge}
-                        value={Age}
-                    />
-                    <RNPicker
-                        style={{ height: 50, width: 100 }}
-                        onValueChange = {(value) => onChangeGender(value)}
-                        value={Gender}
-                        placeholder={{
-                            label: 'Seleccione su sexo',
-                            value: null,
-                        }}
-                        items= {[
-                            {label: 'Hombre', value: 'H'},
-                            {label: 'Mujer', value: 'M'},
-                            {label: 'Otro', value: 'O'},
-                        ]}
-                    />
-                </View>
+                <RNPicker
+                    style={{ height: 200, width: 100 }}
+                    onValueChange = {(value) => onChangeGender(value)}
+                    value={Gender}
+                    placeholder={{
+                        label: 'Seleccione su sexo',
+                        value: null,
+                    }}
+                    items= {[
+                        {label: 'Hombre', value: 'H'},
+                        {label: 'Mujer', value: 'M'},
+                        {label: 'Otro', value: 'O'},
+                    ]}
+                />
                 <TextInput 
                     style={styles.inputs} 
                     placeholder='Curp' 
@@ -64,6 +61,8 @@ export const Register = ({navigation}) => {
                     placeholder='Contraseña' 
                     keyboardType='default'
                     secureTextEntry
+                    onChangeText={onChangePassword}
+                    value={password}
                 />
                 <TextInput 
                     style={styles.inputs} 
@@ -124,7 +123,7 @@ const styles = StyleSheet.create({
     },
     pickers: {
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     selectPicker: {
         backgroundColor: '#BFBFBF',
